@@ -12,10 +12,10 @@ public:
 
 	bool IsDead();
 	virtual void ProcessShot(Shot &shot) = 0;
-
-
 	virtual void PrintShutObject(int x, int y) = 0;
 	virtual void PrintGameObject() = 0;
+
+	virtual int ObjectType() = 0;
 	
 
 };
@@ -27,6 +27,9 @@ public:
 	virtual void ProcessShot(Shot &shot);
 	virtual void PrintShutObject(int x, int y);
 	virtual void PrintGameObject();
+	virtual int ObjectType() {
+		return 1;
+	}
 
 
 };
@@ -40,4 +43,8 @@ public:
 
 	virtual void PrintShutObject(int x, int y);
 	virtual void PrintGameObject();
+
+	virtual int ObjectType() {
+		return 2;
+	}
 };

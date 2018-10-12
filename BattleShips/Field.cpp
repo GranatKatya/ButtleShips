@@ -25,6 +25,8 @@
 				unshut_cells.push_back(_arr_of_cells[i]);
 			}
 		}
+		
+
 		return unshut_cells;
 
 	}
@@ -46,6 +48,15 @@
 					_arr_of_cells[_arr_of_cells.size() - 2]->SetD(&(*_arr_of_cells[_arr_of_cells.size() - 1]));
 				}
 			}
+		}
+
+		for (size_t i = 1; i <11; i++)//x
+		{
+			_arr_of_markup.push_back(new Cell(i, 0, _x_shift -20, _y_shift-20));
+		}
+		for (size_t i = 1; i <11; i++)//y
+		{
+			_arr_of_markup.push_back(new Cell(0, i, _x_shift - 20, _y_shift - 20));
 		}
 	}
 	
@@ -109,6 +120,11 @@
 		for (size_t i = 0; i < _arr_of_cells.size(); i++)
 		{
 			_arr_of_cells[i]->Print(RGB(0, 255, 255));
+			
+		}
+		for (size_t i = 0; i < _arr_of_markup.size(); i++)
+		{
+			_arr_of_markup[i]->PrintByTemplate(RGB(255, 125, 0),i);
 		}
 		
 	}
@@ -124,6 +140,10 @@
 		for (size_t i = 0; i < _arr_of_cells.size(); i++)
 		{
 			_arr_of_cells[i]->Print(RGB(0, 255, 255));
+		}
+		for (size_t i = 0; i < _arr_of_markup.size(); i++)
+		{
+			_arr_of_markup[i]->PrintByTemplate(RGB(255, 125, 0), i);
 		}
 	}
 

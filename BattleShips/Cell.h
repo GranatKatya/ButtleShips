@@ -4,6 +4,9 @@
 class GameObject;
 class Shot;
 
+extern bool templates[20][20][20];
+
+
 class Cell {
 
 	int _x;
@@ -69,4 +72,27 @@ public:
 	void SetGetGameObject(GameObject& g);
 
 
+	void PrintByTemplate(COLORREF color, int index1) {
+
+		HWND myconsole = GetConsoleWindow();
+		HDC mydc = GetDC(myconsole);
+
+		COORD coord;
+		TransformCoord(coord);
+
+		for (int i = 0; i < 20; ++i)
+		{
+			for (int j = 0; j < 20; ++j) {
+				if (templates[index1][j][i]) {
+					SetPixel(mydc, coord.X + i, coord.Y + j, color);
+				}
+			}
+		}
+		ReleaseDC(myconsole, mydc);
+	}
+
+
 };
+
+
+
