@@ -19,41 +19,43 @@ public:
 
 	void Clean() {
 		GotoXY(0, 0);
-		cout << "                              ";
+		cout << "                                      ";
 		GotoXY(0, 1);
-		cout << "                             ";
+		cout << "                                      ";
 		GotoXY(0, 2);
-		cout << "                             ";
+		cout << "                                      ";
 		GotoXY(0, 3);
-		cout << "                             ";
+		cout << "                                      ";
 		GotoXY(0, 4);
-		cout << "                                               ";
+		cout << "                                      ";
 		GotoXY(0, 5);
-		cout << "                                               ";
+		cout << "                                      ";
 		GotoXY(0, 6);
-		cout << "                                               ";
+		cout << "                                      ";
 		GotoXY(0, 7);
-		cout << "                                               ";
+		cout << "                                      ";
 		GotoXY(0, 8);
-		cout << "                                               ";
+		cout << "                                      ";
 		GotoXY(0, 9);
-		cout << "                                               ";
+		cout << "                                      ";
 		GotoXY(0, 10);
-		cout << "                                               ";
+		cout << "                                      ";
 		GotoXY(0, 11);
-		cout << "                                               ";
+		cout << "                                      ";
 		GotoXY(0, 12);
-		cout << "                                               ";
+		cout << "                                      ";
 		GotoXY(0, 13);
-		cout << "                                               ";
+		cout << "                                      ";
 		GotoXY(0, 14);
-		cout << "                                               ";
+		cout << "                                      ";
 		GotoXY(0, 15);
-		cout << "                                               ";
+		cout << "                                      ";
 		GotoXY(0, 16);
-		cout << "                                               ";
+		cout << "                                      ";
 		GotoXY(0, 17);
-		cout << "                                               ";
+		cout << "                                      ";
+
+	
 	}
 
 	void CleanEror() {
@@ -67,69 +69,110 @@ public:
 		Clean();
 
 		char chx;
-		int y;
+		char y;
 		COORD *c = nullptr;
+		int x;
 
 		for (size_t i = 0; i < size; i++)
 		{
-		/*    GotoXY(0, 0);
-			cout << "                                           ";
-			GotoXY(0, 1);
-			cout << "                                           ";
-			GotoXY(0, 2);
-			cout << "                                           ";
-			GotoXY(0, 3);
-			cout << "                                           ";*/
-			GotoXY(0, 0);
+			Clean();
+			
+				GotoXY(0, 0);
 
-			if (input == 1) {
-				cout << "Enter X for " << i << " segment of " << size << " - deck ship" << endl;
-				cin >> chx;
-			}
-			 else if(input == 2) {
-				cout << "Choose X for ship to exploude" << endl;
-				cin >> chx;
-			}
-			else {
-				cout << "Enter X for move" << endl;
-				cin >> chx;
-			}
+				if (input == 1) {
+					cout << "Enter X for " << i << " segment of " << size << " - deck ship" << endl;
+
+					cin >> chx;
+
+				}
+				else if (input == 2) {
+					cout << "Choose X for ship to exploude" << endl;
+					cin >> chx;
+				}
+				else {
+					cout << "Enter X for move" << endl;
+					cin >> chx;
+				}
 
 
-			int x = (int)chx - 97;
-			if (x < 0 || x > 9) {
-				PrintStatus("Please enter letter between a-j ");
-			//	cout << "Please enter letter between a-j " << endl;
-				i--;
-				continue;
-			}
+				 x = (int)chx - 97;
+				if (x < 0 || x > 9) {
+					PrintStatus("Please enter letter between a-j ");
+					//	cout << "Please enter letter between a-j " << endl;
+					i--;
+					continue;
+				}
 
-			if (input == 1){
-				cout << "Enter Y for " << i << "segment of " << size << " - deck ship" << endl;
-				cin >> y;
-			}
-			else if (input == 2) {
-				
-				cout << "Choose Y for ship to exploude" << endl;
-				cin >> y;
-			}
-			else {
-				cout << "Enter Y for move" << endl;
-				cin >> y;
-			}
+				/*while (1)
+				{*/
+				if (input == 1) {
+					cout << "Enter Y for " << i << "segment of " << size << " - deck ship" << endl;
+					/*try {
+						cin.exceptions( ios::fail);*/
+					cin >> y;
 
-			if (y < 1 || y > 10) {
-				PrintStatus("Please enter digit between 1-10");
-				//GotoXY(0, 20);
-				//cout << "Please enter digit between 1-10" << endl;
-				i--;
-				continue;
-			}
+					/*}
+					catch (exception  ex) {
+						Sleep(100);
+					}*/
+				}
+				else if (input == 2) {
+
+					cout << "Choose Y for ship to exploude" << endl;
+
+					cin >> y;
+
+				}
+				else {
+					cout << "Enter Y for move" << endl;
+					cin >> y;
+
+					//try {
+					//	if (cin.fail()) {
+					//		throw 4;
+					//	}
+					//}
+					//catch (int i) {
+					//	std::cout << "Invalid input" << std::endl;
+					//	//cin.clear();
+					//	Sleep(1000);
+					//	exit(0);
+					//	//break;
+					//}break;
+
+				}
+				int y1 = y -'0' ;
+
+				if (y1 < 0|| y1 > 9) {
+					//Clean();
+					PrintStatus("Please enter digit between 1-10");
+					i--;
+					continue;
+				}
+		//	}
+
+				y1 += 1;
+
+			//int32_t example;
+			//while (1) {
+			//	std::cin >> example;
+
+			//	try {
+			//		if (cin.fail()) {
+			//			throw 4;
+			//		}
+			//	}
+			//	catch (int i) {
+			//		std::cout << "Invalid input" << std::endl;
+			//		cin.clear();
+			//		break;
+			//	}
+			//}
 
 			c = new COORD();
 
 			c->X = x;
-			c->Y = y-1;
+			c->Y = y1-1;
 			coord.push_back(c);
 		}
 	
@@ -138,10 +181,11 @@ public:
 
 	void PrintStatus(const char* str) {
 		GotoXY(0, 20);
-		cout << "                                                                                                     ";
+		cout << "                                                ";
 		GotoXY(0, 21);
-		cout << "                                                                                                     ";
+		cout << "                                                ";
 
+		Clean();
 		GotoXY(0,20);
 		cout << str;
 	}
@@ -284,77 +328,78 @@ public:
 	void SetUpFleet() {//в начале  Game
 
 		CleanEror();
-		//GetValidatedCoords(4);
-		GetValidateCoordsTest(4);
+		//PrintStatus("");
+		GetValidatedCoords(4);
 		fieldUser->CreateShip(coord);
-		cout << "Ship created" << endl;
+		//PrintStatus("Ship created");
 		fieldUser->PrintShips();
 		
 
 		CleanEror();
-		//GetValidatedCoords(3);
-		GetValidateCoordsTest(3);
+		//PrintStatus("");
+		GetValidatedCoords(3);
 		fieldUser->CreateShip(coord);
-		cout << "Ship created" << endl;
+	//	PrintStatus("Ship created");
 		fieldUser->PrintShips();
 		CleanEror();
-	//	GetValidatedCoords(3);
-		GetValidateCoordsTest(3);
+		//PrintStatus("");
+		GetValidatedCoords(3);
 		fieldUser->CreateShip(coord);
-		cout << "Ship created" << endl;
-		fieldUser->PrintShips();
-
-		CleanEror();
-	//	GetValidatedCoords(2);
-		GetValidateCoordsTest(2);
-		fieldUser->CreateShip(coord);
-		cout << "Ship created" << endl;
-		fieldUser->PrintShips();
-		CleanEror();
-		//GetValidatedCoords(2);
-		GetValidateCoordsTest(2);
-		fieldUser->CreateShip(coord);
-		cout << "Ship created" << endl;
-		fieldUser->PrintShips();
-		CleanEror();
-		//GetValidatedCoords(2);
-		GetValidateCoordsTest(2);
-		fieldUser->CreateShip(coord);
-		cout << "Ship created" << endl;
+	//	PrintStatus("Ship created");
 		fieldUser->PrintShips();
 
 		CleanEror();
-		//GetValidatedCoords(1);
-		GetValidateCoordsTest(1);
+		//PrintStatus("");
+		GetValidatedCoords(2);
 		fieldUser->CreateShip(coord);
-		cout << "Ship created" << endl;
+		//PrintStatus("Ship created");
 		fieldUser->PrintShips();
 		CleanEror();
-		//GetValidatedCoords(1);
-		GetValidateCoordsTest(1);
+		//PrintStatus("");
+		GetValidatedCoords(2);
 		fieldUser->CreateShip(coord);
-		cout << "Ship created" << endl;
+		//PrintStatus("Ship created");	
 		fieldUser->PrintShips();
 		CleanEror();
-	//	GetValidatedCoords(1);
-		GetValidateCoordsTest(1);
+		//PrintStatus("");
+		GetValidatedCoords(2);
 		fieldUser->CreateShip(coord);
-		cout << "Ship created" << endl;
+		//PrintStatus("Ship created");	
+		fieldUser->PrintShips();
+
+//		PrintStatus("");
+		CleanEror();
+		GetValidatedCoords(1);
+		fieldUser->CreateShip(coord);
+	//	PrintStatus("Ship created");
 		fieldUser->PrintShips();
 		CleanEror();
-		//GetValidatedCoords(1);
-		GetValidateCoordsTest(1);
+		//PrintStatus("");
+		GetValidatedCoords(1);
 		fieldUser->CreateShip(coord);
-		cout << "Ship created" << endl;
+		//PrintStatus("Ship created");
+		fieldUser->PrintShips();
+		CleanEror();
+		//PrintStatus("");
+		GetValidatedCoords(1);
+		fieldUser->CreateShip(coord);
+		//PrintStatus("Ship created");
+		fieldUser->PrintShips();
+		CleanEror();
+		//PrintStatus("");
+		GetValidatedCoords(1);
+		fieldUser->CreateShip(coord);
+		//PrintStatus("Ship created");
 		fieldUser->PrintShips();
 
 		CleanEror();
-		//GetValidatedCoords(1);
-		GetValidateCoordsTest(1);
+		//PrintStatus("");
+		GetValidatedCoords(1);
 		fieldUser->CreateMine(coord);
-		cout << "Ship created" << endl;
+		//PrintStatus("Ship created");
 		fieldUser->PrintShips();
 		CleanEror();
+		//PrintStatus("");
 		Clean();
 
 	}
@@ -379,12 +424,7 @@ public:
 
 
 				PrintStatus("Ship coords shoud form a row");
-				// Print error
-				/*GotoXY(0, 20);
-				cout << "                               ";
-				GotoXY(0, 20);
-				cout << "Ship coords shoud form a row" << endl;*/
-
+				
 				continue;	
 			}
 			for (size_t i = 0; i < coord.size(); i++)
@@ -392,10 +432,6 @@ public:
 				if (!fieldUser->AreSurraundionCellsEmpty(coord[i]->X, coord[i]->Y)) {
 					// Print another error
 					PrintStatus("Ship shoud not be adjacent to enother object");
-					/*GotoXY(0, 20);
-					cout << "                                              " << endl;
-					GotoXY(0,20);
-					cout << "Ship shoud not be adjacent to enother object" << endl;*/
 					coords_valid = false;
 					break;
 

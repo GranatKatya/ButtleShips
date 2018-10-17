@@ -2,6 +2,12 @@
 
 #include "stdafx.h"
 
+
+
+
+
+
+
 class InterfaceIntelligence {
 
 protected:
@@ -37,42 +43,42 @@ public:
 
 		GetValidateCoords(4);
 		_fieldEnemy->CreateShip(_ship_coords);
-		_fieldEnemy->PrintShips();
+		//_fieldEnemy->PrintShips();
 
 
 		GetValidateCoords(3);
 		_fieldEnemy->CreateShip(_ship_coords);
-		_fieldEnemy->PrintShips();
+		//_fieldEnemy->PrintShips();
 		GetValidateCoords(3);
 		_fieldEnemy->CreateShip(_ship_coords);
-		_fieldEnemy->PrintShips();
+		//_fieldEnemy->PrintShips();
 
 		GetValidateCoords(2);
 		_fieldEnemy->CreateShip(_ship_coords);
-		_fieldEnemy->PrintShips();
+		//_fieldEnemy->PrintShips();
 		GetValidateCoords(2);
 		_fieldEnemy->CreateShip(_ship_coords);
-		_fieldEnemy->PrintShips();
+		//_fieldEnemy->PrintShips();
 		GetValidateCoords(2);
 		_fieldEnemy->CreateShip(_ship_coords);
-		_fieldEnemy->PrintShips();
+		//_fieldEnemy->PrintShips();
 
 		GetValidateCoords(1);
 		_fieldEnemy->CreateShip(_ship_coords);
-		_fieldEnemy->PrintShips();
+		//_fieldEnemy->PrintShips();
 		GetValidateCoords(1);
 		_fieldEnemy->CreateShip(_ship_coords);
-		_fieldEnemy->PrintShips();
+		//_fieldEnemy->PrintShips();
 		GetValidateCoords(1);
 		_fieldEnemy->CreateShip(_ship_coords);
-		_fieldEnemy->PrintShips();
+		//_fieldEnemy->PrintShips();
 		GetValidateCoords(1);
 		_fieldEnemy->CreateShip(_ship_coords);
-		_fieldEnemy->PrintShips();
+		//_fieldEnemy->PrintShips();
 
 		GetValidateCoords(1);
 		_fieldEnemy->CreateMine(_ship_coords);
-		_fieldEnemy->PrintShips();
+		//_fieldEnemy->PrintShips();
 
 	}
 
@@ -183,7 +189,7 @@ public:
 class SimpleIntelligence  : public InterfaceIntelligence {
 
 public:
-
+	SimpleIntelligence() {}
 	SimpleIntelligence(FieldInterface & field, FieldInterface & field2) {
 		_fieldEnemy = &field;
 		_fieldInterface = &field2;
@@ -196,6 +202,7 @@ public:
 class HardIntelligence : public InterfaceIntelligence {
 
 public:
+	HardIntelligence() {}
 	HardIntelligence(FieldInterface & field, FieldInterface & field2) {
 		_fieldEnemy = &field;
 		_fieldInterface = &field2;
@@ -220,7 +227,7 @@ public:
 						break;
 					}
 				}
-				if (wonded_cells[i]->GetR() != nullptr) {
+				if (wonded_cells[i]->GetD() != nullptr) {
 					if (wonded_cells[i]->GetD()->GetGameObject() != nullptr &&
 						wonded_cells[i]->GetD()->GetIsShut()) {
 						direction = 2;
@@ -372,3 +379,29 @@ public:
 
 };
 
+
+
+
+class IntelligenceFactory {
+
+public:
+	virtual InterfaceIntelligence * createIntelligence(FieldInterface & field, FieldInterface & field2) = 0;
+};
+
+class SimpleIntelligenceFactory : public IntelligenceFactory {
+
+public:
+	virtual InterfaceIntelligence * createIntelligence(FieldInterface & field, FieldInterface & field2) {
+		return new SimpleIntelligence(field, field2);
+	}
+
+};
+
+class HardIntelligenceFactory : public IntelligenceFactory {
+
+public:
+	virtual InterfaceIntelligence * createIntelligence(FieldInterface & field, FieldInterface & field2) {
+		return new HardIntelligence(field, field2);
+	}
+
+};
